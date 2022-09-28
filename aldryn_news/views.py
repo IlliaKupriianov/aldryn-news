@@ -59,7 +59,8 @@ class ArchiveView(PaginatedBaseNewsView, ArchiveIndexView):
         kwargs['year'] = int(self.kwargs.get('year')) if 'year' in self.kwargs else None
         if kwargs['year']:
             kwargs['archive_date'] = datetime.date(kwargs['year'], kwargs['month'] or 1, 1)
-        kwargs['tags'] = Tag.objects.all()
+        used_tags = News.objects.values_list('tags', flat=True).distinct()
+        kwargs['tags'] = Tag.objects.filter(pk__in=used_tags)
         return super(ArchiveView, self).get_context_data(**kwargs)
 
 

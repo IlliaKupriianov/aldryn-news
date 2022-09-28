@@ -184,6 +184,7 @@ class News(TranslatableModel):
     objects = RelatedManager()
     published = PublishedManager(queryset_class=NewsTranslationQueryset)
     tags = TaggableManager(blank=True, through=TaggedItem, manager=CustomTaggableManager)
+    canonical_tag = models.URLField(blank=True)
 
     class Meta:
         verbose_name = _('News')
