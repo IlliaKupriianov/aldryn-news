@@ -100,8 +100,10 @@ class Tag(TranslatableModel):
 
     translations = TranslatedFields(
         name=models.CharField(_('Name'), max_length=255),
-        slug=models.SlugField(verbose_name=_('Slug'), max_length=100)
+        slug=models.SlugField(verbose_name=_('Slug'), max_length=100),
     )
+
+    ordering = models.IntegerField(_('Ordering'), default=0)
 
     objects = TagManager()
 

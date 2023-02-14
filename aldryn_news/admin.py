@@ -52,8 +52,9 @@ class TaggedItemInline(admin.StackedInline):
 
 
 class TagAdmin(TranslatableAdmin):
-    list_display = ['__str__', 'all_translations']
+    list_display = ['__str__', 'all_translations', 'ordering']
     inlines = [TaggedItemInline]
+    list_editable = ['ordering']
 
     def get_fieldsets(self, request, obj=None):
         fieldsets = [
