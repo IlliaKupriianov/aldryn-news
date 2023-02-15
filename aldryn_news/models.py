@@ -266,5 +266,3 @@ class NewsLinksPlugin(CMSPlugin):
 
     def get_news(self):
         return self.news.all()
-
-#  test 2
